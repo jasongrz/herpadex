@@ -1,0 +1,32 @@
+<!-- Shows user's total collection after logging in -->
+
+<div class="container"></br>
+	<h1>Dashboard for <%= current_user.email %></h1>
+	<a href="/addnew" class="btn btn-primary">Add New Reptile</a>
+	<% if @rep %>
+	<div class="table-responsive">
+		<table class="table table-striped table-sm">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Species</th>
+					<th>Sex</th>
+					<th>Weight</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @rep.each do |r| %>
+				<tr>
+					<th><$=r.id%></th>
+					<th><%=r.name%></th>
+					<th><%=r.species%></th>
+					<th><%=r.sex%></th>
+					<th><%=r.weight%></th>
+				</tr>
+			<% end %>
+			</tbody>
+		</table>
+	</div>
+	<% end %>
+</div>
