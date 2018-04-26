@@ -21,8 +21,9 @@ end
 get "/dashboard" do
 	authenticate!
 
-	@rep = Reptile.all(:userid => :current_user)
+	@rep = Reptile.all(:user_id => :current_user)
 	# need something like this to grab all reptiles owned by logged in user
+	# dashboard is still coming up empty. idk if i did this wrong or /added wrong
 
 	erb :dashboard
 end
@@ -32,7 +33,7 @@ get "/addnew" do
 end
 
 post "/added" do
-
+	# need to create new reptile from filled form and save into database
 	newrep = Reptile.new
 	newrep.user_id = :current_user
 	newrep.name = params["name"]
@@ -50,6 +51,6 @@ post "/added" do
 end
 
 get "/profile" do
-	# 
+	# will make a link from dashboard entries that shows profile of selected reptile
 	erb :profile
 end
