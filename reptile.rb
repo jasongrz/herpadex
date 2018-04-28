@@ -1,4 +1,3 @@
-require 'sinatra'
 require 'data_mapper'
 
 if ENV['DATABASE_URL']
