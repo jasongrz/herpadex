@@ -13,7 +13,6 @@ class Reptile
 	property :name, String
 	property :sex, String
 	property :species, String
-	property :age, String	#not sure how to store age, or if we should get rid of it
 	property :created_at, DateTime
 	property :weight, Integer
 	property :morph, String

@@ -2,7 +2,7 @@
 
 <div class="container"></br>
 	<h1>Dashboard for <%= current_user.email %></h1>
-	<a href="/addnew" class="btn btn-primary">Add New Reptile</a>
+	<a href="/addnew" class="btn btn-success">Add New Reptile</a>
 	<% if @rep %>
 	<div class="table-responsive">
 		<table class="table table-striped table-sm">
@@ -19,7 +19,7 @@
 			<% @rep.each do |r| %>
 				<tr>
 					<th><%=r.id%></th>
-					<th><%=r.name%></th>
+					<th><a href="/profile"><%=r.name%></a></th>
 					<th><%=r.species%></th>
 					<th><%=r.sex%></th>
 					<th><%=r.weight%></th>

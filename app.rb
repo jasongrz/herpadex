@@ -17,11 +17,10 @@ get "/" do
 	erb :index
 end
 
-
 get "/dashboard" do
 	authenticate!
 
-	@rep = Reptile.all(:user_id => current_user.id)
+	@rep = Reptile.all(:user_id => current_user.id)	# grabs all reptiles owned by current user
 	erb :dashboard
 end
 
@@ -30,13 +29,15 @@ get "/addnew" do
 end
 
 post "/added" do
-	# need to create new reptile from filled form and save into database
-	newrep = Reptile.new
+	check = Reptile.first(:name => params["name"])	# check if reptile with same name already exists
+	if(check)
+		redirect "/added_failed"
+	end
+	newrep = Reptile.new 	# if reptile doesn't already exist, create new and add to database
 	newrep.user_id = current_user.id
 	newrep.name = params["name"]
 	newrep.sex = params["sex"]
 	newrep.species = params["species"]
-	newrep.age = params["age"]
 	newrep.weight = params["weight"].to_i
 	newrep.morph = params["morph"]
 	newrep.sire_id = params["father"].to_i
@@ -47,7 +48,32 @@ post "/added" do
 	redirect "/dashboard"
 end
 
+get "/added_failed" do
+	# alerts user that added failed due to reptile already existing in database
+	erb :added_failed 
+end
+
 get "/profile" do
-	# will make a link from dashboard entries that shows profile of selected reptile
+	# need to find a way to show profile of selected reptile from dashboard!!!!!
 	erb :profile
+end
+
+get "/edit" do
+	# need to find a way to show edit page of selected reptile from profile!!!!!
+	erb :edit
+end
+
+post "/edited" do
+	# need to find a way to actually edit reptile from profile!!!!!
+	editrep = Reptile.first(:name => params["name"])
+	editrep.sex = params["sex"]
+	editrep.species = params["species"]
+	editrep.weight = params["weight"].to_i
+	editrep.morph = params["morph"]
+	editrep.sire_id = params["father"].to_i
+	editrep.dam_id = params["mother"].to_i
+	editrep.image_url = params["url"]
+	editrep.save
+
+	redirect "/dashboard"
 end
