@@ -23,14 +23,14 @@
 			</thead>
 			<tbody>
 				<tr>
-					<th>01</th>
-					<th>test</th>
-					<th>gecko</th>
-					<th>male</th>
-					<th>5</th>
-					<th>test</th>
-					<th><a href="#">012</th>
-					<th><a href="#">023</th>
+					<th><%=@cur_rep.id%></th>
+					<th><%=@cur_rep.name%></th>
+					<th><%=@cur_rep.species%></th>
+					<th><%=@cur_rep.sex%></th>
+					<th><%=@cur_rep.id%></th>
+					<th><%=@cur_rep.created_at%></th>
+					<th><a href="/profile/<%=@cur_rep.sire_id%>"><%=@cur_rep.sire_id%></th>
+					<th><a href="/profile/<%=@cur_rep.dam_id%>"><%=@cur_rep.dam_id%></th>
 				</tr>
 			</tbody>
 		</table>

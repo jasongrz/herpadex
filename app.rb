@@ -56,7 +56,9 @@ get "/added_failed" do
 	erb :added_failed 
 end
 
-get "/profile" do
+get "/profile/:reptile_id" do
+	id = params[:reptile_id]
+	@cur_rep = Reptile.first(id: id)
 	# need to find a way to show profile of selected reptile from dashboard!!!!!
 	erb :profile
 end
@@ -96,3 +98,4 @@ get "/unpay" do
 	current_user.paid = false
 	redirect "/"
 end
+
