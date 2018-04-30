@@ -64,3 +64,6 @@ def authenticate!
 		redirect "/login"
 	end
 end
+
+#if the user wants to edit a reptile then they'll be shown the edit page for that rep, which will have a different layout
+
