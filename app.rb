@@ -25,6 +25,9 @@ get "/dashboard" do
 end
 
 get "/addnew" do
+	if(Reptile.all(:user_id => current_user.id).count >= 10 && !current_user.paid)
+		redirect "/premium"
+	end
 	erb :addnew
 end
 
@@ -76,4 +79,20 @@ post "/edited" do
 	editrep.save
 
 	redirect "/dashboard"
+end
+
+get "/premium" do
+	erb :premium
+end
+
+post "/payday" do
+	# mockup for payment and toggling user to paid user
+	current_user.paid = true
+	redirect "/"
+end
+
+get "/unpay" do 
+# toggles user to unpaid for testing reasons
+	current_user.paid = false
+	redirect "/"
 end
