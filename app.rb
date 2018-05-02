@@ -68,6 +68,7 @@ get "/edit" do
 	erb :edit
 end
 
+# How do we know
 post "/edited" do
 	# need to find a way to actually edit reptile from profile!!!!!
 	editrep = Reptile.first(:name => params["name"])
