@@ -18,7 +18,7 @@
 			<tbody>
 			<% @rep.each do |r| %>
 				<tr>
-					<th><%=r.id%></th>
+					<th><a href="/profile/<%=r.id%>"><%=r.id%></a></th>
 					<th><a href="/profile/<%=r.id%>"><%=r.name%></a></th>
 					<th><%=r.species%></th>
 					<th><%=r.sex%></th>

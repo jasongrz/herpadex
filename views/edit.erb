@@ -1,15 +1,15 @@
 <!-- Edit an individual reptile's profile -->
 
 <div class="container"></br>
-	<form action="/edited" method="post">
-		Name: <input type="text" name="name"><br>
-		Sex: <input type="text" name="sex"><br>
-		Species: <input type="text" name="species"><br>
-		Weight: <input type="text" name="weight"><br>
-		Morph: <input type="text" name="morph"><br>
-		Sire: <input type="text" name="sire"><br>
-		Dam: <input type="text" name="dam"><br>
-		Imageurl: <input type="text" name="url"><br>
+	<form action="/edited/<%=@cur_rep.id%>" method="post">
+		Name: <input type="text" name="name" value="<%=@cur_rep.name%>"><br>
+		Sex: <input type="text" name="sex" value="<%=@cur_rep.sex%>"><br>
+		Species: <input type="text" name="species" value="<%=@cur_rep.species%>"><br>
+		Weight: <input type="text" name="weight" value="<%=@cur_rep.weight%>"><br>
+		Morph: <input type="text" name="morph" value="<%=@cur_rep.morph%>"><br>
+		Sire: <input type="text" name="sire" value="<%=@cur_rep.sire_id%>"><br>
+		Dam: <input type="text" name="dam" value="<%=@cur_rep.dam_id%>"><br>
+		Imageurl: <input type="text" name="url" value="<%=@cur_rep.image_url%>"><br>
 		<input type="submit" value="Submit">
 	</form>
 </div>

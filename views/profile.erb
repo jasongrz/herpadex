@@ -2,10 +2,10 @@
 
 <div class='container'></br>
 	<h1>Profile for Reptile</h1>
-	<a href="/edit" class="btn btn-warning">Edit</a>
+	<a href="/edit/<%=@cur_rep.id%>" class="btn btn-warning">Edit</a>
 	<a href="#" class="btn btn-primary">Share</a>
 	<div class='container'>
-		<img src="https://kids.nationalgeographic.com/content/dam/kids/photos/animals/Reptiles/A-G/gecko-on-leaf.adapt.945.1.jpg">
+		<img src="<%=@cur_rep.image_url%>">
 	</div>
 	<div class="table-responsive">
 		<table class="table table-striped table-sm">

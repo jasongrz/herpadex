@@ -43,8 +43,8 @@ post "/added" do
 	newrep.species = params["species"]
 	newrep.weight = params["weight"].to_i
 	newrep.morph = params["morph"]
-	newrep.sire_id = params["father"].to_i
-	newrep.dam_id = params["mother"].to_i
+	newrep.sire_id = params["sire"].to_i
+	newrep.dam_id = params["dam"].to_i
 	newrep.image_url = params["url"]
 	newrep.save
 
@@ -57,31 +57,28 @@ get "/added_failed" do
 end
 
 get "/profile/:reptile_id" do
-	id = params[:reptile_id]
-	@cur_rep = Reptile.first(id: id)
-	# need to find a way to show profile of selected reptile from dashboard!!!!!
+	@cur_rep = Reptile.first(:id => params[:reptile_id])
 	erb :profile
 end
 
-get "/edit" do
-	# need to find a way to show edit page of selected reptile from profile!!!!!
+get "/edit/:reptile_id" do
+	@cur_rep = Reptile.first(:id => params[:reptile_id])
 	erb :edit
 end
 
-# How do we know
-post "/edited" do
-	# need to find a way to actually edit reptile from profile!!!!!
-	editrep = Reptile.first(:name => params["name"])
+post "/edited/:reptile_id" do
+	editrep = Reptile.first(:id => params[:reptile_id])
+	editrep.name = params["name"]
 	editrep.sex = params["sex"]
 	editrep.species = params["species"]
 	editrep.weight = params["weight"].to_i
 	editrep.morph = params["morph"]
-	editrep.sire_id = params["father"].to_i
-	editrep.dam_id = params["mother"].to_i
+	editrep.sire_id = params["sire"].to_i
+	editrep.dam_id = params["dam"].to_i
 	editrep.image_url = params["url"]
 	editrep.save
 
-	redirect "/dashboard"
+	redirect "/profile/#{editrep.id}"
 end
 
 get "/premium" do
