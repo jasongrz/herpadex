@@ -1,7 +1,7 @@
 <!-- This is the profile page for an individual reptile -->
 
 <div class='container'></br>
-	<h1>Profile for Reptile</h1>
+	<h1><%=@cur_rep.name%></h1>
 	<a href="/edit/<%=@cur_rep.id%>" class="btn btn-warning">Edit</a>
 	<a href="#" class="btn btn-primary">Share</a>
 	<div class='container'>
@@ -12,7 +12,6 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>Name</th>
 					<th>Species</th>
 					<th>Sex</th>
 					<th>Weight</th>
@@ -24,10 +23,9 @@
 			<tbody>
 				<tr>
 					<th><%=@cur_rep.id%></th>
-					<th><%=@cur_rep.name%></th>
 					<th><%=@cur_rep.species%></th>
 					<th><%=@cur_rep.sex%></th>
-					<th><%=@cur_rep.id%></th>
+					<th><%=@cur_rep.weight%> gram(s)</th>
 					<th><%=@cur_rep.morph%></th>
 					<th><a href="/profile/<%=@cur_rep.sire_id%>"><%=@cur_rep.sire_id%></a></th>
 					<th><a href="/profile/<%=@cur_rep.dam_id%>"><%=@cur_rep.dam_id%></a></th>

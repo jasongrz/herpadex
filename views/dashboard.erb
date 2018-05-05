@@ -1,5 +1,19 @@
 <!-- Shows user's total collection after logging in -->
 
+<style>
+img {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 100px; /* Set a small width */
+}
+
+/* Add a hover effect (blue shadow) */
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+</style>
+
 <div class="container"></br>
 	<h1>Dashboard for <%= current_user.email %></h1>
 	<a href="/addnew" class="btn btn-success">Add New Reptile</a>
@@ -22,7 +36,8 @@
 					<th><a href="/profile/<%=r.id%>"><%=r.name%></a></th>
 					<th><%=r.species%></th>
 					<th><%=r.sex%></th>
-					<th><%=r.weight%></th>
+					<th><%=r.weight%> gram(s)</th>
+					<th><a href="/profile/<%=r.id%>"><img src="<%=r.image_url%>" class="img-thumbnail"></a></th>
 				</tr>
 			<% end %>
 			</tbody>

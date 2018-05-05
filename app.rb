@@ -58,6 +58,9 @@ end
 
 get "/profile/:reptile_id" do
 	@cur_rep = Reptile.first(:id => params[:reptile_id])
+	if(!@cur_rep)
+		redirect "/dashboard"
+	end
 	erb :profile
 end
 
