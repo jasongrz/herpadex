@@ -16,8 +16,8 @@ class Reptile
 	property :created_at, DateTime
 	property :weight, Integer
 	property :morph, String
-	property :sire_id, Integer	#father id
-	property :dam_id, Integer	#mother id
+	property :sire_id, Integer	# father id
+	property :dam_id, Integer	# mother id
 	property :image_url, Text
 end
 

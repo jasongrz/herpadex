@@ -3,8 +3,24 @@
 <div class='container'></br>
 	<h1><%=@cur_rep.name%></h1>
 	<a href="/edit/<%=@cur_rep.id%>" class="btn btn-warning">Edit</a>
-	<a href="#" class="btn btn-primary">Share</a>
-	<div class='container'>
+	<details class="get-repo-select-menu js-get-repo-select-menu float-right position-relative dropdown-details details-reset" open="">
+  		<summary class="btn btn-primary">Share
+    		<span class="dropdown-caret"></span>
+  		</summary>
+  		<div class="position-relative">
+    		<div class="container">
+          		<p class="mb-2">Copy link to share this profile</p>
+			    <div class="input-group">
+			  		<input type="text" class="form-control input-monospace input-sm js-url-field" value="localhost:4567/profile/<%=@cur_rep.id%>/share" readonly="">
+				</div>
+			</div>
+        </div>
+	</details>
+	<form onsubmit="return confirm('Are you sure you want to delete this reptile?')" action="/<%=@cur_rep.id%>" method="POST">
+    	<input type="hidden" name="_method" value="DELETE">
+    	<button type="submit" class="btn btn-danger">Delete</button>
+  	</form>
+	<div class='container'></br></br>
 		<img src="<%=@cur_rep.image_url%>">
 	</div>
 	<div class="table-responsive">
@@ -33,5 +49,4 @@
 			</tbody>
 		</table>
 	</div>
-
 </div>

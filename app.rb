@@ -25,7 +25,7 @@ get "/dashboard" do
 end
 
 get "/addnew" do
-	if(Reptile.all(:user_id => current_user.id).count >= 10 && !current_user.paid)
+	if(Reptile.all(:user_id => current_user.id).count >= 10 && !current_user.paid) # if user has reached free limit, prompts upgrade to premium
 		redirect "/premium"
 	end
 	erb :addnew
@@ -57,19 +57,22 @@ get "/added_failed" do
 end
 
 get "/profile/:reptile_id" do
+	# show profile of selected reptile
 	@cur_rep = Reptile.first(:id => params[:reptile_id])
-	if(!@cur_rep)
+	if(!@cur_rep)	# performs check if sire/dam links are wrong or empty to prevent crash
 		redirect "/dashboard"
 	end
 	erb :profile
 end
 
 get "/edit/:reptile_id" do
+	# prompts edit page for selected reptile
 	@cur_rep = Reptile.first(:id => params[:reptile_id])
 	erb :edit
 end
 
 post "/edited/:reptile_id" do
+	# edits data of selected reptile
 	editrep = Reptile.first(:id => params[:reptile_id])
 	editrep.name = params["name"]
 	editrep.sex = params["sex"]
@@ -84,7 +87,15 @@ post "/edited/:reptile_id" do
 	redirect "/profile/#{editrep.id}"
 end
 
+delete '/:reptile_id' do
+  del = Reptile.first(:id => params[:reptile_id])
+  del.destroy
+
+  redirect '/dashboard'
+end
+
 get "/premium" do
+	# gives user option to upgrade to premium
 	erb :premium
 end
 
@@ -95,8 +106,13 @@ post "/payday" do
 end
 
 get "/unpay" do 
-# toggles user to unpaid for testing reasons
+	# toggles user to unpaid for testing reasons
 	current_user.paid = false
 	redirect "/"
 end
 
+get "/profile/:reptile_id/share" do
+	# shows profile to non-user
+	@cur_rep = Reptile.first(:id => params[:reptile_id])
+	erb :share
+end
