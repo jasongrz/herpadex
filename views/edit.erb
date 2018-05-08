@@ -1,15 +1,61 @@
 <!-- Edit an individual reptile's profile -->
 
-<div class="container"></br>
-	<form action="/edited/<%=@cur_rep.id%>" method="post">
-		Name: <input type="text" name="name" value="<%=@cur_rep.name%>"><br>
-		Sex: <input type="text" name="sex" value="<%=@cur_rep.sex%>"><br>
-		Species: <input type="text" name="species" value="<%=@cur_rep.species%>"><br>
-		Weight: <input type="text" name="weight" value="<%=@cur_rep.weight%>"><br>
-		Morph: <input type="text" name="morph" value="<%=@cur_rep.morph%>"><br>
-		Sire: <input type="text" name="sire" value="<%=@cur_rep.sire_id%>"><br>
-		Dam: <input type="text" name="dam" value="<%=@cur_rep.dam_id%>"><br>
-		Image url: <input type="text" name="url" value="<%=@cur_rep.image_url%>"><br>
-		<input type="submit" value="Submit">
-	</form>
+</br></br><div class="container">
+	<div class="col-md-8 order-md-1">
+	<h4 class="mb-3">Edit <%=@cur_rep.name%></h4>
+	<hr class="mb-4">
+    	<form action="/edited/<%=@cur_rep.id%>" method="post">
+      	<div class="row">
+        	<div class="col-md-6 mb-3">
+          		<label>Name</label>
+          		<input type="text" class="form-control" name="name" value="<%=@cur_rep.name%>" required="required">
+        	</div>
+        	<div class="col-md-6 mb-3">
+          		<label>Species</label>
+          		<input type="text" class="form-control" name="species" value="<%=@cur_rep.species%>">
+        	</div>
+      	</div>
+      	<div class="mb-3">
+        	<label>Morph</label>
+        	<input type="text" class="form-control" name="morph" value="<%=@cur_rep.morph%>">
+      	</div>
+      	<div class="row">
+        	<div class="col-md-6 mb-3">
+          		<label>Sire id</label>
+          		<input type="text" class="form-control" name="sire" value="<%=@cur_rep.sire_id%>">
+        	</div>
+        	<div class="col-md-6 mb-3">
+          		<label>Dam id</label>
+          		<input type="text" class="form-control" name="dam" value="<%=@cur_rep.dam_id%>">
+        	</div>
+      	</div>
+      	<div class="row">
+        	<div class="col-md-5 mb-3">
+          		<label for="sex">Sex</label>
+          		<select class="custom-select d-block w-100" name="sex">
+            		<option value="">Choose...</option>
+            		<option>Female</option>
+            		<option>Male</option>
+            		<option>Unknown</option>
+          		</select>
+        	</div>
+        	<div class="col-md-5 mb-3">
+          		<label for="state">Weight (grams)</label>
+          		<select class="custom-select d-block w-100" name="weight">
+            		<option value="">Choose...</option>
+            		<% 50.times do %>
+              			<option><%=@count%></option>
+              			<% @count+=1 %>
+            		<% end %>
+          		</select>
+        	</div>
+      	</div>
+      	<div class="mb-3">
+        	<label for="address">Image url</label>
+        	<input type="text" class="form-control" name="url" value="<%=@cur_rep.image_url%>">
+      	</div>
+      	<hr class="mb-4">
+      	<input type="submit" value="Submit">
+    	</form>
+  	</div>
 </div>

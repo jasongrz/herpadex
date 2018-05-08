@@ -28,6 +28,7 @@ get "/addnew" do
 	if(Reptile.all(:user_id => current_user.id).count >= 10 && !current_user.paid) # if user has reached free limit, prompts upgrade to premium
 		redirect "/premium"
 	end
+	@count = 0
 	erb :addnew
 end
 
@@ -68,6 +69,7 @@ end
 get "/edit/:reptile_id" do
 	# prompts edit page for selected reptile
 	@cur_rep = Reptile.first(:id => params[:reptile_id])
+	@count = 0
 	erb :edit
 end
 
@@ -114,5 +116,8 @@ end
 get "/profile/:reptile_id/share" do
 	# shows profile to non-user
 	@cur_rep = Reptile.first(:id => params[:reptile_id])
+	if(!@cur_rep)	# performs check if sire/dam links are wrong or empty to prevent crash
+		redirect "/"
+	end
 	erb :share
 end

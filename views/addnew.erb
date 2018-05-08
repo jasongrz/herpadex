@@ -1,14 +1,60 @@
 <!-- page to add a new reptile to user's dashboard -->
-<div class="container"></br>
-	<form action="/added" method="post">
-		Name: <input type="text" name="name"><br>
-		Sex: <input type="text" name="sex"><br>
-		Species: <input type="text" name="species"><br>
-		Weight: <input type="text" name="weight"><br>
-		Morph: <input type="text" name="morph"><br>
-		Sire: <input type="text" name="sire"><br>
-		Dam: <input type="text" name="dam"><br>
-		Image url: <input type="text" name="url"><br>
-		<input type="submit" value="Submit">
-	</form>
+</br></br><div class="container">
+	<div class="col-md-8 order-md-1">
+    <h4 class="mb-3">Add new reptile</h4>
+    <hr class="mb-4">
+    <form action="/added" method="post">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>Name</label>
+          <input type="text" class="form-control" name="name" required="required">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Species</label>
+          <input type="text" class="form-control" name="species">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label>Morph</label>
+        <input type="text" class="form-control" name="morph">
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label>Sire id</label>
+          <input type="text" class="form-control" name="sire">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label>Dam id</label>
+          <input type="text" class="form-control" name="dam">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 mb-3">
+          <label for="sex">Sex</label>
+          <select class="custom-select d-block w-100" name="sex">
+            <option value="">Choose...</option>
+            <option>Female</option>
+            <option>Male</option>
+            <option>Unknown</option>
+          </select>
+        </div>
+        <div class="col-md-5 mb-3">
+          <label for="state">Weight (grams)</label>
+          <select class="custom-select d-block w-100" name="weight">
+            <option value="">Choose...</option>
+            <% 50.times do %>
+              <option><%=@count%></option>
+              <% @count+=1 %>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="address">Image url</label>
+        <input type="text" class="form-control" name="url">
+      </div>
+      <hr class="mb-4">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 </div>
