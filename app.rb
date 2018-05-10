@@ -121,3 +121,11 @@ get "/profile/:reptile_id/share" do
 	end
 	erb :share
 end
+
+post "/search/:reptile_name" do
+	@search = Reptile.all(:name => params[:reptile_name])
+	if(!search)
+		redirect "/"
+	end
+	erb:search
+end

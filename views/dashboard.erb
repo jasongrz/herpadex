@@ -16,7 +16,7 @@ img:hover {
 
 <div class="container"></br>
 	<h1>Dashboard for <%= current_user.email %></h1>
-	<a href="/addnew" class="btn btn-success">Add New Reptile</a>
+	<a href="/addnew" class="btn btn-info">Add New Reptile</a>
 	<% if @rep %>
 	<div class="table-responsive">
 		<table class="table table-striped table-sm">
@@ -27,6 +27,7 @@ img:hover {
 					<th>Species</th>
 					<th>Sex</th>
 					<th>Weight</th>
+					<th>Photo</th>
 				</tr>
 			</thead>
 			<tbody>
