@@ -14,7 +14,8 @@ require_relative "authentication.rb"
 # if they are not signed in, current_user will be nil
 
 get "/" do
-	erb :index
+	# erb :index
+	File.read(File.join('public', 'index.html'))
 end
 
 get "/dashboard" do
